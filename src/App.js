@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import React from 'react';
+import ReactTypingEffect from 'react-typing-effect';
 import './App.css';
+import Form from './components/Form';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="left-side">
+        <div className="animated-text">
+          <ReactTypingEffect
+            text={['魔技 Magi']}
+            speed={100}
+            eraseDelay={1000}
+            cursorRenderer={cursor => <h1>{cursor}</h1>}
+            displayTextRenderer={(text, i) => {
+              return (
+                <h1>
+                  {text.split('').map((char, i) => {
+                    const key = `${i}`;
+                    return (
+                      <span key={key}>{char}</span>
+                    );
+                  })}
+                </h1>
+              );
+            }}
+          />
+        </div>
+      </div>
+      <div className="right-side">
+        <Form />
+      </div>
     </div>
   );
 }
